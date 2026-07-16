@@ -205,22 +205,43 @@
     padding:9px 14px; border-radius:999px;
   }
 
+  /* ---------- surplus types (時間/モノ/空間/お金) ---------- */
+  .surplus-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-bottom:30px;}
+  .surplus{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 4px 12px; text-align:center;
+  }
+  .surplus svg{width:32px; height:32px; margin:0 auto 8px; color:var(--ink);}
+  .surplus .lbl{font-size:12.5px; font-weight:800;}
+
+  /* ---------- offering illustration ---------- */
+  .give-illust{margin:0 auto 26px; width:150px; color:var(--ink); display:block;}
+
   /* ---------- desktop side decoration ---------- */
   .side-decor{display:none;}
-  @media (min-width:1040px){
+  @media (min-width:1120px){
     .side-decor{
-      display:block; position:fixed; top:160px; width:180px; z-index:1;
+      display:block; position:fixed; top:206px; width:208px; z-index:1; text-align:center;
     }
-    .side-decor.left{left:calc(50vw - 240px - 210px);}
-    .side-decor.right{left:calc(50vw + 240px + 30px);}
-    .deco-card{
-      background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;
-      font-size:12.5px; font-weight:800; text-align:center; box-shadow:0 10px 28px rgba(0,0,0,.05);
+    .side-decor.left{left:calc(50vw - 240px - 230px);}
+    .side-decor.right{left:calc(50vw + 240px + 22px);}
+    .deco-pill{
+      display:inline-block; border:2px solid var(--ink); border-radius:9px; padding:6px 15px;
+      font-size:11px; font-weight:900; letter-spacing:.1em; background:var(--paper);
+      position:relative; margin-bottom:24px;
     }
-    .deco-card .glyph{font-size:24px; color:var(--lime-deep); margin-bottom:8px;}
-    .deco-card.a{transform:rotate(-5deg); margin-bottom:26px;}
-    .deco-card.b{background:var(--lime-tint); transform:rotate(4deg);}
-    .deco-note{font-size:11px; color:var(--gray); font-weight:500; margin-top:6px; line-height:1.6;}
+    .deco-pill::after{
+      content:""; position:absolute; left:50%; bottom:-7px; margin-left:-6px;
+      width:11px; height:11px; background:var(--paper);
+      border-right:2px solid var(--ink); border-bottom:2px solid var(--ink); transform:rotate(45deg);
+    }
+    .deco-illust{color:var(--ink); margin:0 auto 16px; width:132px;}
+    .deco-cap{font-size:15px; font-weight:900;}
+    .deco-sub{font-size:11.5px; color:var(--gray); font-weight:600; margin-top:7px; line-height:1.65;}
+    .deco-dots{display:flex; gap:12px; justify-content:center; margin:4px auto 18px;}
+    .deco-dots span{
+      width:36px; height:36px; border-radius:50%; border:2px dashed var(--line);
+      display:flex; align-items:center; justify-content:center; color:var(--line); font-weight:800; font-size:15px;
+    }
   }
 
   /* ---------- footer ---------- */
@@ -236,18 +257,33 @@
 <body>
 
 <div class="side-decor left">
-  <div class="deco-card a">
-    <div class="glyph">⇄</div>
-    <div>余る ⇄ 渡す</div>
-    <div class="deco-note">が、今の軸</div>
-  </div>
+  <div class="deco-pill">THE IDEA</div>
+  <svg class="deco-illust" viewBox="0 0 132 118" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- floating box -->
+    <path d="M50 18 L66 9 L82 18 L66 27 Z"/>
+    <path d="M50 18 V33 L66 42 V27"/>
+    <path d="M82 18 V33 L66 42"/>
+    <!-- sparkles -->
+    <path d="M96 14 v9 M91.5 18.5 h9"/>
+    <path d="M40 34 v6 M37 37 h6"/>
+    <!-- open hand offering upward -->
+    <path d="M40 96
+             C34 84 34 66 40 62
+             C44 59 49 61 50 67
+             L52 58 C53 52 59 52 60 58
+             L62 55 C63 49 69 49 70 56
+             L72 60 C77 55 84 58 82 68
+             C80 78 78 84 74 96"/>
+    <path d="M40 96 C42 106 52 110 60 110 C68 110 74 106 74 96"/>
+  </svg>
+  <div class="deco-cap">余る → 渡す</div>
+  <div class="deco-sub">が、今の軸</div>
 </div>
 <div class="side-decor right">
-  <div class="deco-card b">
-    <div class="glyph">○ ○ ○</div>
-    <div>具体案はまだ空白</div>
-    <div class="deco-note">思いついたら教えてください</div>
-  </div>
+  <div class="deco-pill">STATUS</div>
+  <div class="deco-dots"><span>?</span><span>?</span><span>?</span></div>
+  <div class="deco-cap">具体案はまだ空白</div>
+  <div class="deco-sub">思いついたら<br>教えてください</div>
 </div>
 
 <div class="wrap">
@@ -316,7 +352,62 @@
   <section style="padding-top:0;">
     <div class="section-tag"><span class="num">2</span><span class="label">OUR CURRENT LENS</span></div>
     <h2>今の考え方の軸</h2>
-    <p class="section-desc"><b style="color:var(--ink);">「めっちゃ余ってるもの」を「めっちゃ困ってる誰か」に渡す。</b>今の軸は、これだけです。手本にしている3つの事例。</p>
+    <p class="section-desc"><b style="color:var(--ink);">「めっちゃ余ってるもの」を「めっちゃ困ってる誰か」に渡す。</b>今の軸は、これだけです。</p>
+
+    <svg class="give-illust" viewBox="0 0 220 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- left hand giving a box -->
+      <path d="M24 84 C18 74 18 60 24 57 C28 55 32 57 33 62 L34 54 C35 49 41 49 42 55 L43 52 C44 47 50 47 50 53 L52 57 C56 53 62 55 60 64 C58 72 56 78 53 84"/>
+      <path d="M24 84 C26 92 34 95 40 95 C46 95 52 92 53 84"/>
+      <path d="M30 47 L42 40 L54 47 L42 54 Z"/>
+      <path d="M30 47 V57 M54 47 V57 M42 54 V40"/>
+      <!-- arrow -->
+      <path d="M92 48 H128"/>
+      <path d="M120 40 L129 48 L120 56"/>
+      <text x="110" y="34" fill="currentColor" stroke="none" font-size="13" font-weight="800" text-anchor="middle">渡す</text>
+      <!-- right hand receiving -->
+      <path d="M196 84 C202 74 202 60 196 57 C192 55 188 57 187 62 L186 54 C185 49 179 49 178 55 L177 52 C176 47 170 47 170 53 L168 57 C164 53 158 55 160 64 C162 72 164 78 167 84"/>
+      <path d="M196 84 C194 92 186 95 180 95 C174 95 168 92 167 84"/>
+      <path d="M177 40 v10 M172 45 h10"/>
+    </svg>
+
+    <p class="section-desc" style="margin-bottom:14px;">そもそも「余ってるもの」って、こういうもの。大きく<b style="color:var(--ink);">4つ</b>を想定しています。</p>
+    <div class="surplus-grid">
+      <div class="surplus">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="26" r="14"/>
+          <path d="M24 26 V18 M24 26 L30 29"/>
+          <path d="M19 8 H29 M24 8 V12"/>
+        </svg>
+        <div class="lbl">時間</div>
+      </div>
+      <div class="surplus">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 18 L24 11 L38 18 L24 25 Z"/>
+          <path d="M10 18 V34 L24 41 V25"/>
+          <path d="M38 18 V34 L24 41"/>
+          <path d="M17 14.5 L31 21.5"/>
+        </svg>
+        <div class="lbl">モノ</div>
+      </div>
+      <div class="surplus">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 24 L24 11 L39 24"/>
+          <path d="M13 21 V38 H35 V21"/>
+          <path d="M20 38 V29 H28 V38"/>
+        </svg>
+        <div class="lbl">空間</div>
+      </div>
+      <div class="surplus">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="14"/>
+          <path d="M18 16 L24 23 L30 16"/>
+          <path d="M24 23 V32 M19 25 H29 M19 28.5 H29"/>
+        </svg>
+        <div class="lbl">お金</div>
+      </div>
+    </div>
+
+    <p class="section-desc" style="margin-bottom:14px;">実際にこの型で伸びた、手本にしている3つの事例。</p>
     <div style="margin-bottom:30px;">
       <div class="axis-example">
         <div class="co">タイミー</div>
