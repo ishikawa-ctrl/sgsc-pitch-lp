@@ -12,20 +12,23 @@
     --lime-tint:#e4fff5;
     --ink:#0b0d0a;
     --paper:#f7f8f2;
-    --card:#ffffff;
+    --card:#f4f5ee;
     --gray:#6b7268;
-    --line:#e4e6dd;
+    --line:#e6e8df;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{-webkit-text-size-adjust:100%;}
   body{
-    background:var(--paper);
+    background:#e8eae1;
     color:var(--ink);
     font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     line-height:1.7;
     overflow-x:hidden;
   }
-  .wrap{max-width:480px; margin:0 auto; position:relative;}
+  .wrap{max-width:480px; margin:0 auto; position:relative; background:#fff;}
+  @media (min-width:540px){
+    .wrap{border-radius:30px; margin:26px auto 40px; box-shadow:0 26px 70px rgba(20,30,15,.09);}
+  }
   img,svg{max-width:100%; display:block;}
 
   /* ---------- header ---------- */
@@ -110,7 +113,7 @@
   /* ---------- business model diagram ---------- */
   .biz-flow{display:flex; align-items:center; gap:6px; margin:16px 0 12px;}
   .biz-node{
-    flex:1; background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    flex:1; background:#fff; border:1px solid var(--line); border-radius:12px;
     padding:10px 6px; text-align:center; font-size:11px; font-weight:800;
   }
   .biz-node .sub{display:block; font-weight:500; color:var(--gray); font-size:9.5px; margin-top:3px; line-height:1.4;}
@@ -148,27 +151,34 @@
   .stuck-card p + p{margin-top:12px;}
   .stuck-card b{color:var(--ink);}
 
-  /* ---------- quadrant ---------- */
+  /* ---------- quadrant map ---------- */
   .quad-box{
     background:var(--ink); border-radius:20px; padding:22px 18px 18px; color:var(--paper); margin-bottom:30px;
   }
-  .quad-title{font-size:13px; font-weight:800; color:var(--lime); margin-bottom:14px;}
+  .quad-title{font-size:13px; font-weight:800; color:var(--lime); margin-bottom:16px;}
+  .map{display:grid; grid-template-columns:16px 1fr; grid-template-rows:1fr 16px; gap:9px;}
+  .map-y{
+    grid-column:1; grid-row:1; writing-mode:vertical-rl; transform:rotate(180deg);
+    display:flex; align-items:center; justify-content:center; white-space:nowrap;
+    font-size:9.5px; font-weight:700; color:#8a9080; letter-spacing:.02em;
+  }
+  .map-grid{grid-column:2; grid-row:1;}
+  .map-x{
+    grid-column:2; grid-row:2; display:flex; align-items:center; justify-content:flex-end;
+    font-size:9.5px; font-weight:700; color:#8a9080; letter-spacing:.02em;
+  }
   .quad{
-    position:relative; aspect-ratio:1/1; background:#1a1d16; border-radius:14px;
+    position:relative; aspect-ratio:1/1; background:#1a1d16; border-radius:14px; overflow:hidden;
     display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
   }
-  .quad div{
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    font-size:11.5px; font-weight:800; padding:10px; border:.5px solid #2c2f26;
+  .quad .qc{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    font-size:12px; font-weight:800; padding:8px; border:.5px solid #2c2f26; color:#8a9080;
   }
-  .quad .q2{color:#8a9080;}
-  .quad .q1{color:#8a9080;}
-  .quad .q3{color:#8a9080;}
-  .quad .q4{background:var(--lime); color:var(--ink); border-radius:0 0 14px 0;}
-  .quad-axis{
-    display:flex; justify-content:space-between; font-size:10px; color:#8a9080; font-weight:700; margin-top:10px;
-  }
-  .quad-note{font-size:12px; color:#b9c0ac; margin-top:14px; line-height:1.7;}
+  .quad .qc span{font-weight:600; font-size:9px; opacity:.7; margin-top:4px; line-height:1.35;}
+  .quad .qc.hot{background:var(--lime); color:var(--ink);}
+  .quad .qc.hot span{opacity:.85;}
+  .quad-note{font-size:12px; color:#b9c0ac; margin-top:16px; line-height:1.7;}
   .quad-note b{color:var(--lime);}
 
   /* ---------- blank slots ---------- */
@@ -239,8 +249,8 @@
     .deco-sub{font-size:11.5px; color:var(--gray); font-weight:600; margin-top:7px; line-height:1.65;}
     .deco-dots{display:flex; gap:12px; justify-content:center; margin:4px auto 18px;}
     .deco-dots span{
-      width:36px; height:36px; border-radius:50%; border:2px dashed var(--line);
-      display:flex; align-items:center; justify-content:center; color:var(--line); font-weight:800; font-size:15px;
+      width:36px; height:36px; border-radius:50%; border:2px dashed #b7bcae; background:#fff;
+      display:flex; align-items:center; justify-content:center; color:#9aa093; font-weight:800; font-size:15px;
     }
   }
 
@@ -436,15 +446,20 @@
     </div>
 
     <div class="quad-box">
-      <div class="quad-title">もう少し分解すると、こんな地図にもなる</div>
-      <div class="quad">
-        <div class="q2">反転で狙う<br><span style="opacity:.6">加工すれば化ける</span></div>
-        <div class="q1">磨いて売る<br><span style="opacity:.6">既に価値あり</span></div>
-        <div class="q3">引取り・ずらし<br><span style="opacity:.6">誰もが手放したい</span></div>
-        <div class="q4">今回はここ<br>素直にマッチング</div>
+      <div class="quad-title">「余ってる × 困ってる」で地図にすると</div>
+      <div class="map">
+        <div class="map-y">困っている人が多い →</div>
+        <div class="map-grid">
+          <div class="quad">
+            <div class="qc">取り合い<span>数が少なく高くつく</span></div>
+            <div class="qc hot">ねらい目<span>余ってる×困ってる</span></div>
+            <div class="qc">無風<span>誰も気にしない</span></div>
+            <div class="qc">持ち腐れ<span>余ってるだけ</span></div>
+          </div>
+        </div>
+        <div class="map-x">余っている量が多い →</div>
       </div>
-      <div class="quad-axis"><span>← 処分費がかかる</span><span>そのまま売れる →</span></div>
-      <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域を今は狙っています。</p>
+      <p class="quad-note">両方が高い<b>右上＝「めっちゃ余ってる」と「めっちゃ困ってる」が重なる場所</b>。ここを探しています。</p>
     </div>
 
     <p class="section-desc" style="margin-bottom:14px;">具体的な候補は、まだ空白。思いついたらここに書いていきます。</p>
