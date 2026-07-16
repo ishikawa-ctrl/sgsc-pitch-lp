@@ -9,6 +9,7 @@
   :root{
     --lime:#3dffbe;
     --lime-deep:#00e6a0;
+    --lime-tint:#e4fff5;
     --ink:#0b0d0a;
     --paper:#f7f8f2;
     --card:#ffffff;
@@ -105,6 +106,24 @@
   .tl-title{font-size:16px; font-weight:800; margin-bottom:8px;}
   .tl-body{font-size:13.5px; color:var(--gray);}
   .tl-body b{color:var(--ink);}
+
+  /* ---------- business model diagram ---------- */
+  .biz-flow{display:flex; align-items:center; gap:6px; margin:16px 0 12px;}
+  .biz-node{
+    flex:1; background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:10px 6px; text-align:center; font-size:11px; font-weight:800;
+  }
+  .biz-node .sub{display:block; font-weight:500; color:var(--gray); font-size:9.5px; margin-top:3px; line-height:1.4;}
+  .biz-arrow{font-size:14px; color:var(--gray); flex-shrink:0;}
+  .biz-merits{display:flex; flex-direction:column; gap:8px;}
+  .biz-merit{background:var(--lime-tint); border-radius:10px; padding:10px 12px; font-size:11.5px; color:var(--ink); line-height:1.55;}
+  .biz-merit b{display:block; font-size:10px; color:var(--lime-deep); margin-bottom:3px; letter-spacing:.03em;}
+
+  /* ---------- stuck-on card ---------- */
+  .stuck-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 18px;}
+  .stuck-card p{font-size:13.5px; color:var(--gray);}
+  .stuck-card p + p{margin-top:12px;}
+  .stuck-card b{color:var(--ink);}
 
   /* ---------- conditions grid ---------- */
   .cond-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:30px;}
@@ -222,7 +241,18 @@
         <div class="tl-card">
           <div class="tl-kicker">STEP 1 ─ 当初の案</div>
           <div class="tl-title">趣味のサブスクリプション</div>
-          <div class="tl-body">趣味を始める障壁（<b>時間・費用・心理・人間関係・継続不安</b>）を解消するため、道具の売買・貸し借りや情報提供をひとつのサービスに束ねる案からスタート。ウクレレやギター、バク転など、メンバー自身の挫折体験がベースにありました。</div>
+          <div class="tl-body">もともとの関心は「<b>社会人の孤独</b>」でした。新しい趣味を始めやすくなれば、会話のきっかけや友達ができて、孤独も解消できるのではという発想からスタート。企業から道具を安く提供してもらい、私たちがマッチングし、利用者はサブスクや購入オプションで使う、という仕組みを考えていました。</div>
+          <div class="biz-flow">
+            <div class="biz-node">企業<span class="sub">道具を<br>安く提供</span></div>
+            <div class="biz-arrow">→</div>
+            <div class="biz-node">私たち<span class="sub">マッチング</span></div>
+            <div class="biz-arrow">→</div>
+            <div class="biz-node">利用者<span class="sub">サブスク／<br>購入</span></div>
+          </div>
+          <div class="biz-merits">
+            <div class="biz-merit"><b>企業側のメリット</b>新しく趣味を始める人＝新規顧客の獲得</div>
+            <div class="biz-merit"><b>利用者側のメリット</b>会話のきっかけ・友達ができ、生きがいにもつながり孤独の解消に</div>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -230,15 +260,15 @@
         <div class="tl-card">
           <div class="tl-kicker">STEP 2 ─ 気づき</div>
           <div class="tl-title">「趣味」だけでは、勝ち筋が細い</div>
-          <div class="tl-body">趣味の多くは一人で完結し、地方では対面コミュニティも育ちにくい。何より、<b>スタートアップとして世界に広がるスケール</b>と<b>社会的インパクト</b>の説明が弱いという懸念がチーム内で一致しました。</div>
+          <div class="tl-body">でも考えるほど穴に気づきました。スタートアップとして成立するには<b>膨大な資源</b>と、それを<b>切実に欲しがる人</b>の両方が必要。趣味というくくりでは、そのどちらも足りないんじゃないか——これでは勝てないんじゃないか、と思うようになりました。</div>
         </div>
       </div>
       <div class="tl-item now">
         <div class="tl-dot">●</div>
         <div class="tl-card">
           <div class="tl-kicker">STEP 3 ─ 今</div>
-          <div class="tl-title">「余っているもの」を軸に据え直す</div>
-          <div class="tl-body">趣味という切り口を離れ、<b>世界中どこにでも存在する「余剰」を、それを切実に必要としている人へつなぐ</b>という、より普遍的な軸に立ち戻って検討中です。</div>
+          <div class="tl-title">趣味の案は一旦手放し、ゼロから考え直し中</div>
+          <div class="tl-body">タイミー（余っている時間×欲しい人）やメルカリ（いらないもの×欲しい人）のように、世の中の「余っているもの」は、誰かにとって切実に必要なものだ——という、より普遍的な軸に今は立っています。</div>
         </div>
       </div>
     </div>
@@ -285,7 +315,7 @@
       <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域から、2週間で検証できる需給ペアを探しています。</p>
     </div>
 
-    <p class="section-desc" style="margin-bottom:14px;">実際に検討している需給ペアの候補（横にスクロールできます）</p>
+    <p class="section-desc" style="margin-bottom:14px;">この軸で今考えている仮説の例（横にスクロールできます）</p>
     <div class="pair-scroll">
       <div class="pair">
         <div class="idx">CANDIDATE 01</div>
@@ -335,17 +365,28 @@
     </div>
   </section>
 
-  <!-- 03 みんなに聞きたいこと -->
+  <!-- 03 困っていること -->
   <section style="padding-top:0;">
-    <div class="section-tag"><span class="num">3</span><span class="label">ASKING YOU</span></div>
+    <div class="section-tag"><span class="num">3</span><span class="label">STUCK ON</span></div>
+    <h2>正直、まだ悩んでいること</h2>
+    <p class="section-desc">軸は決まったものの、「これだ」という具体案にはまだ至っていません。</p>
+    <div class="stuck-card">
+      <p>「余っているもの」で考えられる案自体はいくらでも出てきます。でも例えば<b>車のライドシェア</b>のように、すでに世界中で使い倒されている領域は、正直<b>後発すぎる</b>気がして踏み切れずにいます。</p>
+      <p>だからこそ、<b>まだ誰も手をつけていない「余っているもの」</b>を一緒に探したいです。特に、参加者それぞれが詳しい分野・業界にこそ、まだ気づかれていない余剰が眠っている気がしています。</p>
+    </div>
+  </section>
+
+  <!-- 04 みんなに聞きたいこと -->
+  <section style="padding-top:0;">
+    <div class="section-tag"><span class="num">4</span><span class="label">ASKING YOU</span></div>
     <h2>みんなに聞きたいこと</h2>
     <p class="section-desc">この軸で進めるにあたって、率直な意見が欲しいです。</p>
 
     <div class="q-list">
       <div class="q-item">
         <div class="qmark">Q</div>
-        <p>「素直にマッチング」領域は競合が多そうに見えるけど、勝ち筋はどこにあると思う？</p>
-        <div class="sub">タイミー・akippa・Airbnb型の後発として戦う意味を知りたいです</div>
+        <p>あなたの関心分野・詳しい業界に、地味に「めっちゃ余ってるもの」ってないですか？</p>
+        <div class="sub">一緒に考えたいので、思いつく限り教えてください</div>
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
@@ -354,8 +395,8 @@
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
-        <p>趣味の案から離れたことは、正しい判断だと思う？</p>
-        <div class="sub">初期の熱量があった分、賛否あると思っていますが、遠慮なく聞かせてください</div>
+        <p>ライドシェアみたいに「後発すぎる」領域を避けるとしたら、どこに気をつければいい？</p>
+        <div class="sub">競合の少ない切り口を見極めるヒントが欲しいです</div>
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
@@ -365,18 +406,19 @@
     </div>
   </section>
 
-  <!-- 04 みんなが聞きたいこと -->
+  <!-- 05 みんなが聞きたいこと -->
   <section style="padding-top:0;">
-    <div class="section-tag"><span class="num">4</span><span class="label">YOUR TURN</span></div>
+    <div class="section-tag"><span class="num">5</span><span class="label">YOUR TURN</span></div>
     <h2>逆に、気になることは？</h2>
     <div class="ask-back">
       <h3>「それって結局◯◯じゃない？」<br>を歓迎します。</h3>
-      <p>スライドの代わりにこのページを作ったのは、その場で一方的に話すより、率直な質問や違和感を先にもらいたかったからです。マッチングの時間、直接聞いてください。</p>
+      <p>スライドの代わりにこのページを作ったのは、一方的に話すより先に、率直な質問や違和感をもらいたかったからです。正直、まだ「これだ」という決定打はありません。でも、やる気と勢いだけはあります。あなたの関心分野の話を聞かせてもらえたら、その場で一緒に考えられると思います。</p>
       <div class="chip-row">
         <span class="chip">社会的インパクトは？</span>
         <span class="chip">収益化の道筋は？</span>
         <span class="chip">なぜ仙台発でやる？</span>
         <span class="chip">競合との違いは？</span>
+        <span class="chip">一緒に考えてくれる？</span>
       </div>
     </div>
   </section>
