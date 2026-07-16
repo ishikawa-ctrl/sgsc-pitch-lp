@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>余っているものを、必要な人へ。 ─ SGSC STAGE2</title>
+<style>
+  :root{
+    --lime:#c8ff3d;
+    --lime-deep:#a3e600;
+    --ink:#0b0d0a;
+    --paper:#f7f8f2;
+    --card:#ffffff;
+    --gray:#6b7268;
+    --line:#e4e6dd;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:480px; margin:0 auto; position:relative;}
+  img,svg{max-width:100%; display:block;}
+
+  /* ---------- header ---------- */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 22px;
+  }
+  .brand{
+    font-weight:800; font-size:14px; letter-spacing:.04em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--lime-deep);}
+  .badge{
+    font-size:11px; font-weight:700; color:var(--gray);
+    border:1px solid var(--line); border-radius:999px; padding:5px 12px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:18px 22px 40px;}
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:800; letter-spacing:.08em;
+    background:var(--ink); color:var(--lime); padding:6px 14px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  h1{
+    font-size:38px; font-weight:900; letter-spacing:-.02em; line-height:1.28;
+  }
+  h1 .hl{
+    background:linear-gradient(180deg, transparent 62%, var(--lime) 62%);
+  }
+  .lede{
+    margin-top:18px; font-size:15px; color:var(--gray); font-weight:500;
+  }
+  .hero-foot{
+    margin-top:28px; display:flex; align-items:center; gap:10px;
+    font-size:12px; color:var(--gray); font-weight:700;
+  }
+  .arrow-down{
+    width:34px; height:34px; border-radius:50%; background:var(--ink);
+    display:flex; align-items:center; justify-content:center; color:var(--lime);
+    animation:bob 1.6s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+  /* ---------- section shell ---------- */
+  section{padding:56px 22px;}
+  .section-tag{
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .section-tag .num{
+    font-size:12px; font-weight:900; color:var(--ink); background:var(--lime);
+    width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .section-tag .label{font-size:12px; font-weight:800; letter-spacing:.06em; color:var(--gray);}
+  h2{font-size:24px; font-weight:900; letter-spacing:-.01em; margin-bottom:14px;}
+  .section-desc{font-size:14px; color:var(--gray); margin-bottom:26px;}
+
+  /* ---------- timeline (経緯) ---------- */
+  .tl{position:relative; padding-left:26px;}
+  .tl::before{
+    content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+    background:var(--line);
+  }
+  .tl-item{position:relative; padding-bottom:30px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute; left:-26px; top:2px; width:20px; height:20px; border-radius:50%;
+    background:var(--card); border:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:10px;
+  }
+  .tl-item.now .tl-dot{background:var(--lime); border-color:var(--lime);}
+  .tl-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 18px;
+  }
+  .tl-item.now .tl-card{border-color:var(--ink); box-shadow:4px 4px 0 var(--lime);}
+  .tl-kicker{font-size:11px; font-weight:800; color:var(--gray); letter-spacing:.04em; margin-bottom:6px;}
+  .tl-title{font-size:16px; font-weight:800; margin-bottom:8px;}
+  .tl-body{font-size:13.5px; color:var(--gray);}
+  .tl-body b{color:var(--ink);}
+
+  /* ---------- conditions grid ---------- */
+  .cond-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:30px;}
+  .cond{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 14px;
+  }
+  .cond .n{font-size:20px; font-weight:900; color:var(--lime-deep); -webkit-text-stroke:1px var(--ink); margin-bottom:6px;}
+  .cond .t{font-size:12.5px; font-weight:800; margin-bottom:4px;}
+  .cond .d{font-size:11.5px; color:var(--gray); line-height:1.55;}
+
+  /* ---------- quadrant ---------- */
+  .quad-box{
+    background:var(--ink); border-radius:20px; padding:22px 18px 18px; color:var(--paper); margin-bottom:30px;
+  }
+  .quad-title{font-size:13px; font-weight:800; color:var(--lime); margin-bottom:14px;}
+  .quad{
+    position:relative; aspect-ratio:1/1; background:#1a1d16; border-radius:14px;
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  }
+  .quad div{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:11.5px; font-weight:800; padding:10px; border:.5px solid #2c2f26;
+  }
+  .quad .q2{color:#8a9080;}
+  .quad .q1{color:#8a9080;}
+  .quad .q3{color:#8a9080;}
+  .quad .q4{background:var(--lime); color:var(--ink); border-radius:0 0 14px 0;}
+  .quad-axis{
+    display:flex; justify-content:space-between; font-size:10px; color:#8a9080; font-weight:700; margin-top:10px;
+  }
+  .quad-note{font-size:12px; color:#b9c0ac; margin-top:14px; line-height:1.7;}
+  .quad-note b{color:var(--lime);}
+
+  /* ---------- pair cards (horizontal scroll) ---------- */
+  .pair-scroll{
+    display:flex; gap:12px; overflow-x:auto; margin:0 -22px; padding:4px 22px 14px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  }
+  .pair-scroll::-webkit-scrollbar{display:none;}
+  .pair{
+    flex:0 0 auto; width:200px; scroll-snap-align:start;
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px;
+  }
+  .pair .idx{font-size:11px; font-weight:800; color:var(--lime-deep);}
+  .pair .name{font-size:14.5px; font-weight:800; margin:8px 0 10px;}
+  .pair .flow{font-size:11.5px; color:var(--gray); display:flex; flex-direction:column; gap:4px;}
+  .pair .flow span{font-weight:700;}
+  .pair .flow .from{color:var(--ink);}
+  .pair .flow .to{color:var(--ink);}
+  .pair .arrow{font-size:11px; color:var(--gray); padding-left:2px;}
+
+  /* ---------- questions (聞きたいこと) ---------- */
+  .q-list{display:flex; flex-direction:column; gap:12px;}
+  .q-item{
+    background:var(--card); border:1px solid var(--line); border-radius:18px 18px 18px 4px; padding:18px 18px;
+    position:relative;
+  }
+  .q-item .qmark{
+    position:absolute; top:-10px; left:-10px; width:28px; height:28px; border-radius:50%;
+    background:var(--ink); color:var(--lime); font-size:13px; font-weight:900;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .q-item p{font-size:14.5px; font-weight:700; padding-left:8px;}
+  .q-item .sub{font-size:12px; color:var(--gray); font-weight:500; margin-top:6px; padding-left:8px;}
+
+  /* ---------- ask-back CTA ---------- */
+  .ask-back{
+    background:var(--lime); border-radius:22px; padding:26px 22px; text-align:left;
+  }
+  .ask-back h3{font-size:19px; font-weight:900; margin-bottom:10px; line-height:1.5;}
+  .ask-back p{font-size:13.5px; color:#3a3f2e; margin-bottom:18px;}
+  .ask-back .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    background:var(--ink); color:var(--paper); font-size:12px; font-weight:700;
+    padding:9px 14px; border-radius:999px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:40px 22px 50px; text-align:center;
+  }
+  footer .fname{font-size:13px; font-weight:800;}
+  footer .frole{font-size:11.5px; color:var(--gray); margin-top:4px;}
+  footer .fline{width:36px; height:2px; background:var(--line); margin:22px auto;}
+  footer .fmeta{font-size:10.5px; color:var(--gray);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand"><span class="dot"></span>SGSC STAGE 2</div>
+    <div class="badge">起案者ピッチ</div>
+  </header>
+
+  <div class="hero">
+    <span class="eyebrow">起業家募集マッチング用資料</span>
+    <h1>捨てられているものは、<br>本当は<span class="hl">誰かの欲しいもの。</span></h1>
+    <p class="lede">趣味のサブスクから始まった検討は、いま「世界中のどこにでもある余剰」を扱う方向に大きく舵を切っています。ここまでの経緯と、今の考え方を短くまとめました。</p>
+    <div class="hero-foot">
+      <div class="arrow-down">↓</div>
+      経緯 → 今の軸 → 聞きたいこと、の順で3分
+    </div>
+  </div>
+
+  <!-- 01 経緯 -->
+  <section>
+    <div class="section-tag"><span class="num">1</span><span class="label">THE STORY SO FAR</span></div>
+    <h2>ここまでの経緯</h2>
+    <p class="section-desc">最初のアイデアから、なぜ方針を変えたのか。3ステップで振り返ります。</p>
+
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-kicker">STEP 1 ─ 当初の案</div>
+          <div class="tl-title">趣味のサブスクリプション</div>
+          <div class="tl-body">趣味を始める障壁（<b>時間・費用・心理・人間関係・継続不安</b>）を解消するため、道具の売買・貸し借りや情報提供をひとつのサービスに束ねる案からスタート。ウクレレやギター、バク転など、メンバー自身の挫折体験がベースにありました。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-kicker">STEP 2 ─ 気づき</div>
+          <div class="tl-title">「趣味」だけでは、勝ち筋が細い</div>
+          <div class="tl-body">趣味の多くは一人で完結し、地方では対面コミュニティも育ちにくい。何より、<b>スタートアップとして世界に広がるスケール</b>と<b>社会的インパクト</b>の説明が弱いという懸念がチーム内で一致しました。</div>
+        </div>
+      </div>
+      <div class="tl-item now">
+        <div class="tl-dot">●</div>
+        <div class="tl-card">
+          <div class="tl-kicker">STEP 3 ─ 今</div>
+          <div class="tl-title">「余っているもの」を軸に据え直す</div>
+          <div class="tl-body">趣味という切り口を離れ、<b>世界中どこにでも存在する「余剰」を、それを切実に必要としている人へつなぐ</b>という、より普遍的な軸に立ち戻って検討中です。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 今の軸 -->
+  <section style="padding-top:0;">
+    <div class="section-tag"><span class="num">2</span><span class="label">OUR CURRENT LENS</span></div>
+    <h2>今の考え方の軸</h2>
+    <p class="section-desc">案を選ぶとき、次の4条件で必ずふるいにかけています。</p>
+
+    <div class="cond-grid">
+      <div class="cond">
+        <div class="n">01</div>
+        <div class="t">切実な欲しさ</div>
+        <div class="d">片側に、頻繁で・お金を払ってでも解きたい痛みがあるか</div>
+      </div>
+      <div class="cond">
+        <div class="n">02</div>
+        <div class="t">集めにくい供給</div>
+        <div class="d">散らばっている／信用が要る＝先に密度を取った者が勝つ堀になるか</div>
+      </div>
+      <div class="cond">
+        <div class="n">03</div>
+        <div class="t">世界に広がる余地</div>
+        <div class="d">地域固有ではなく、どの都市にも同じ形で存在する普遍的な余剰か</div>
+      </div>
+      <div class="cond">
+        <div class="n">04</div>
+        <div class="t">2週間で検証</div>
+        <div class="d">アプリを作らず、手でつなぐだけで需給が動くか確かめられるか</div>
+      </div>
+    </div>
+
+    <div class="quad-box">
+      <div class="quad-title">余剰を2軸で地図にする</div>
+      <div class="quad">
+        <div class="q2">反転で狙う<br><span style="opacity:.6">加工すれば化ける</span></div>
+        <div class="q1">磨いて売る<br><span style="opacity:.6">既に価値あり</span></div>
+        <div class="q3">引取り・ずらし<br><span style="opacity:.6">誰もが手放したい</span></div>
+        <div class="q4">今回はここ<br>素直にマッチング</div>
+      </div>
+      <div class="quad-axis"><span>← 処分費がかかる</span><span>そのまま売れる →</span></div>
+      <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域から、2週間で検証できる需給ペアを探しています。</p>
+    </div>
+
+    <p class="section-desc" style="margin-bottom:14px;">実際に検討している需給ペアの候補（横にスクロールできます）</p>
+    <div class="pair-scroll">
+      <div class="pair">
+        <div class="idx">CANDIDATE 01</div>
+        <div class="name">廃食用油</div>
+        <div class="flow">
+          <span class="from">飲食店の使用済み油</span>
+          <span class="arrow">↓ 回収</span>
+          <span class="to">SAF・BDF原料メーカー</span>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="idx">CANDIDATE 02</div>
+        <div class="name">退店・移転の厨房機器</div>
+        <div class="flow">
+          <span class="from">閉店時に出る中古設備</span>
+          <span class="arrow">↓ 引取り</span>
+          <span class="to">これから開業する人</span>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="idx">CANDIDATE 03</div>
+        <div class="name">パン・総菜の閉店前ロス</div>
+        <div class="flow">
+          <span class="from">毎日出る売れ残り</span>
+          <span class="arrow">↓ 二次加工</span>
+          <span class="to">クラフトビール醸造など</span>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="idx">CANDIDATE 04</div>
+        <div class="name">コーヒーかす</div>
+        <div class="flow">
+          <span class="from">カフェの抽出かす</span>
+          <span class="arrow">↓ 加工</span>
+          <span class="to">きのこ栽培・バイオ素材</span>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="idx">CANDIDATE 05</div>
+        <div class="name">建設現場の端材</div>
+        <div class="flow">
+          <span class="from">現場ごとに出る余り</span>
+          <span class="arrow">↓ 規格化</span>
+          <span class="to">DIY・小規模施工</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 みんなに聞きたいこと -->
+  <section style="padding-top:0;">
+    <div class="section-tag"><span class="num">3</span><span class="label">ASKING YOU</span></div>
+    <h2>みんなに聞きたいこと</h2>
+    <p class="section-desc">この軸で進めるにあたって、率直な意見が欲しいです。</p>
+
+    <div class="q-list">
+      <div class="q-item">
+        <div class="qmark">Q</div>
+        <p>「素直にマッチング」領域は競合が多そうに見えるけど、勝ち筋はどこにあると思う？</p>
+        <div class="sub">タイミー・akippa・Airbnb型の後発として戦う意味を知りたいです</div>
+      </div>
+      <div class="q-item">
+        <div class="qmark">Q</div>
+        <p>5つの候補ペア、どれが一番「2週間で仮説検証できそう」に見える？</p>
+        <div class="sub">直感でOKです。理由も添えてもらえると助かります</div>
+      </div>
+      <div class="q-item">
+        <div class="qmark">Q</div>
+        <p>趣味の案から離れたことは、正しい判断だと思う？</p>
+        <div class="sub">初期の熱量があった分、賛否あると思っていますが、遠慮なく聞かせてください</div>
+      </div>
+      <div class="q-item">
+        <div class="qmark">Q</div>
+        <p>この領域に詳しい人・つなげてほしい人に心当たりはある？</p>
+        <div class="sub">回収・物流・自治体まわりの知見がある方は特に</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 みんなが聞きたいこと -->
+  <section style="padding-top:0;">
+    <div class="section-tag"><span class="num">4</span><span class="label">YOUR TURN</span></div>
+    <h2>逆に、気になることは？</h2>
+    <div class="ask-back">
+      <h3>「それって結局◯◯じゃない？」<br>を歓迎します。</h3>
+      <p>スライドの代わりにこのページを作ったのは、その場で一方的に話すより、率直な質問や違和感を先にもらいたかったからです。マッチングの時間、直接聞いてください。</p>
+      <div class="chip-row">
+        <span class="chip">社会的インパクトは？</span>
+        <span class="chip">収益化の道筋は？</span>
+        <span class="chip">なぜ仙台発でやる？</span>
+        <span class="chip">競合との違いは？</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fname">石川翔太郎</div>
+    <div class="frole">SGSC 2026 ／ STAGE2 起案チーム</div>
+    <div class="fline"></div>
+    <div class="fmeta">最終更新 2026.07.16 ／ このページはマッチングイベント用の簡易資料です</div>
+  </footer>
+
+</div>
+</body>
+</html>
