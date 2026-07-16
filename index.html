@@ -148,15 +148,6 @@
   .stuck-card p + p{margin-top:12px;}
   .stuck-card b{color:var(--ink);}
 
-  /* ---------- conditions grid ---------- */
-  .cond-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:30px;}
-  .cond{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 14px;
-  }
-  .cond .n{font-size:20px; font-weight:900; color:var(--lime-deep); -webkit-text-stroke:1px var(--ink); margin-bottom:6px;}
-  .cond .t{font-size:12.5px; font-weight:800; margin-bottom:4px;}
-  .cond .d{font-size:11.5px; color:var(--gray); line-height:1.55;}
-
   /* ---------- quadrant ---------- */
   .quad-box{
     background:var(--ink); border-radius:20px; padding:22px 18px 18px; color:var(--paper); margin-bottom:30px;
@@ -180,23 +171,13 @@
   .quad-note{font-size:12px; color:#b9c0ac; margin-top:14px; line-height:1.7;}
   .quad-note b{color:var(--lime);}
 
-  /* ---------- pair cards (horizontal scroll) ---------- */
-  .pair-scroll{
-    display:flex; gap:12px; overflow-x:auto; margin:0 -22px; padding:4px 22px 14px;
-    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  /* ---------- blank slots ---------- */
+  .blank-slots{display:flex; gap:14px;}
+  .blank-slot{
+    width:56px; height:56px; border-radius:50%; border:2px dashed var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; color:var(--line);
+    flex-shrink:0;
   }
-  .pair-scroll::-webkit-scrollbar{display:none;}
-  .pair{
-    flex:0 0 auto; width:200px; scroll-snap-align:start;
-    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px;
-  }
-  .pair .idx{font-size:11px; font-weight:800; color:var(--lime-deep);}
-  .pair .name{font-size:14.5px; font-weight:800; margin:8px 0 10px;}
-  .pair .flow{font-size:11.5px; color:var(--gray); display:flex; flex-direction:column; gap:4px;}
-  .pair .flow span{font-weight:700;}
-  .pair .flow .from{color:var(--ink);}
-  .pair .flow .to{color:var(--ink);}
-  .pair .arrow{font-size:11px; color:var(--gray); padding-left:2px;}
 
   /* ---------- questions (聞きたいこと) ---------- */
   .q-list{display:flex; flex-direction:column; gap:12px;}
@@ -224,6 +205,24 @@
     padding:9px 14px; border-radius:999px;
   }
 
+  /* ---------- desktop side decoration ---------- */
+  .side-decor{display:none;}
+  @media (min-width:1040px){
+    .side-decor{
+      display:block; position:fixed; top:160px; width:180px; z-index:1;
+    }
+    .side-decor.left{left:calc(50vw - 240px - 210px);}
+    .side-decor.right{left:calc(50vw + 240px + 30px);}
+    .deco-card{
+      background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;
+      font-size:12.5px; font-weight:800; text-align:center; box-shadow:0 10px 28px rgba(0,0,0,.05);
+    }
+    .deco-card .glyph{font-size:24px; color:var(--lime-deep); margin-bottom:8px;}
+    .deco-card.a{transform:rotate(-5deg); margin-bottom:26px;}
+    .deco-card.b{background:var(--lime-tint); transform:rotate(4deg);}
+    .deco-note{font-size:11px; color:var(--gray); font-weight:500; margin-top:6px; line-height:1.6;}
+  }
+
   /* ---------- footer ---------- */
   footer{
     padding:40px 22px 50px; text-align:center;
@@ -235,11 +234,27 @@
 </style>
 </head>
 <body>
+
+<div class="side-decor left">
+  <div class="deco-card a">
+    <div class="glyph">⇄</div>
+    <div>余る ⇄ 渡す</div>
+    <div class="deco-note">が、今の軸</div>
+  </div>
+</div>
+<div class="side-decor right">
+  <div class="deco-card b">
+    <div class="glyph">○ ○ ○</div>
+    <div>具体案はまだ空白</div>
+    <div class="deco-note">思いついたら教えてください</div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <header>
     <div class="brand"><span class="dot"></span>SGSC STAGE 2</div>
-    <div class="badge">起案者ピッチ</div>
+    <div class="badge">起案者ピッチ ／ 7.18–7.20</div>
   </header>
 
   <div class="hero">
@@ -264,7 +279,7 @@
         <div class="tl-card">
           <div class="tl-kicker">STEP 1 ─ 当初の案</div>
           <div class="tl-title">趣味のサブスクリプション</div>
-          <div class="tl-body">もともとの関心は「<b>社会人の孤独</b>」でした。新しい趣味を始めやすくなれば、会話のきっかけや友達ができて、孤独も解消できるのではという発想からスタート。企業から道具を安く提供してもらい、私たちがマッチングし、利用者はサブスクや購入オプションで使う、という仕組みを考えていました。</div>
+          <div class="tl-body">もともとの関心は「<b>社会人の孤独</b>」。新しい趣味を始めやすくなれば、会話のきっかけや友達ができて孤独も解消できるのでは、という発想からスタートしました。</div>
           <div class="biz-flow">
             <div class="biz-node">企業<span class="sub">道具を<br>安く提供</span></div>
             <div class="biz-arrow">→</div>
@@ -283,15 +298,15 @@
         <div class="tl-card">
           <div class="tl-kicker">STEP 2 ─ 気づき</div>
           <div class="tl-title">「趣味」だけでは、勝ち筋が細い</div>
-          <div class="tl-body">でも考えるほど穴に気づきました。スタートアップとして成立するには<b>膨大な資源</b>と、それを<b>切実に欲しがる人</b>の両方が必要。趣味というくくりでは、そのどちらも足りないんじゃないか——これでは勝てないんじゃないか、と思うようになりました。</div>
+          <div class="tl-body">でも考えるほど穴に気づきました。スタートアップとして成立するには<b>膨大な資源</b>と、それを<b>切実に欲しがる人</b>の両方が必要。趣味というくくりでは、どちらも足りない——これでは勝てないんじゃないか、と思うようになりました。</div>
         </div>
       </div>
       <div class="tl-item now">
         <div class="tl-dot">●</div>
         <div class="tl-card">
           <div class="tl-kicker">STEP 3 ─ 今</div>
-          <div class="tl-title">趣味の案は一旦手放し、ゼロから考え直し中</div>
-          <div class="tl-body">タイミー（余っている時間×欲しい人）やメルカリ（いらないもの×欲しい人）のように、世の中の「余っているもの」は、誰かにとって切実に必要なものだ——という、より普遍的な軸に今は立っています。</div>
+          <div class="tl-title">趣味の案は一旦手放し、絶賛ブレスト中</div>
+          <div class="tl-body">世の中の「余っているもの」は、誰かにとって切実に必要なものだ——という、より普遍的な軸にゼロから立ち戻って考え直しています。</div>
         </div>
       </div>
     </div>
@@ -301,44 +316,7 @@
   <section style="padding-top:0;">
     <div class="section-tag"><span class="num">2</span><span class="label">OUR CURRENT LENS</span></div>
     <h2>今の考え方の軸</h2>
-    <p class="section-desc">案を選ぶとき、次の4条件で必ずふるいにかけています。</p>
-
-    <div class="cond-grid">
-      <div class="cond">
-        <div class="n">01</div>
-        <div class="t">切実な欲しさ</div>
-        <div class="d">片側に、頻繁で・お金を払ってでも解きたい痛みがあるか</div>
-      </div>
-      <div class="cond">
-        <div class="n">02</div>
-        <div class="t">集めにくい供給</div>
-        <div class="d">散らばっている／信用が要る＝先に密度を取った者が勝つ堀になるか</div>
-      </div>
-      <div class="cond">
-        <div class="n">03</div>
-        <div class="t">世界に広がる余地</div>
-        <div class="d">地域固有ではなく、どの都市にも同じ形で存在する普遍的な余剰か</div>
-      </div>
-      <div class="cond">
-        <div class="n">04</div>
-        <div class="t">2週間で検証</div>
-        <div class="d">アプリを作らず、手でつなぐだけで需給が動くか確かめられるか</div>
-      </div>
-    </div>
-
-    <div class="quad-box">
-      <div class="quad-title">余剰を2軸で地図にする</div>
-      <div class="quad">
-        <div class="q2">反転で狙う<br><span style="opacity:.6">加工すれば化ける</span></div>
-        <div class="q1">磨いて売る<br><span style="opacity:.6">既に価値あり</span></div>
-        <div class="q3">引取り・ずらし<br><span style="opacity:.6">誰もが手放したい</span></div>
-        <div class="q4">今回はここ<br>素直にマッチング</div>
-      </div>
-      <div class="quad-axis"><span>← 処分費がかかる</span><span>そのまま売れる →</span></div>
-      <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域から、2週間で検証できる需給ペアを探しています。</p>
-    </div>
-
-    <p class="section-desc" style="margin-bottom:14px;">シンプルに言うと、<b style="color:var(--ink);">「めっちゃ余ってるもの」を「めっちゃ困ってる誰か」に渡す</b>——これが軸です。手本にしている3つの事例。</p>
+    <p class="section-desc"><b style="color:var(--ink);">「めっちゃ余ってるもの」を「めっちゃ困ってる誰か」に渡す。</b>今の軸は、これだけです。手本にしている3つの事例。</p>
     <div style="margin-bottom:30px;">
       <div class="axis-example">
         <div class="co">タイミー</div>
@@ -366,53 +344,23 @@
       </div>
     </div>
 
-    <p class="section-desc" style="margin-bottom:14px;">この軸で今考えている仮説の例（横にスクロールできます）</p>
-    <div class="pair-scroll">
-      <div class="pair">
-        <div class="idx">CANDIDATE 01</div>
-        <div class="name">廃食用油</div>
-        <div class="flow">
-          <span class="from">飲食店の使用済み油</span>
-          <span class="arrow">↓ 回収</span>
-          <span class="to">SAF・BDF原料メーカー</span>
-        </div>
+    <div class="quad-box">
+      <div class="quad-title">もう少し分解すると、こんな地図にもなる</div>
+      <div class="quad">
+        <div class="q2">反転で狙う<br><span style="opacity:.6">加工すれば化ける</span></div>
+        <div class="q1">磨いて売る<br><span style="opacity:.6">既に価値あり</span></div>
+        <div class="q3">引取り・ずらし<br><span style="opacity:.6">誰もが手放したい</span></div>
+        <div class="q4">今回はここ<br>素直にマッチング</div>
       </div>
-      <div class="pair">
-        <div class="idx">CANDIDATE 02</div>
-        <div class="name">退店・移転の厨房機器</div>
-        <div class="flow">
-          <span class="from">閉店時に出る中古設備</span>
-          <span class="arrow">↓ 引取り</span>
-          <span class="to">これから開業する人</span>
-        </div>
-      </div>
-      <div class="pair">
-        <div class="idx">CANDIDATE 03</div>
-        <div class="name">パン・総菜の閉店前ロス</div>
-        <div class="flow">
-          <span class="from">毎日出る売れ残り</span>
-          <span class="arrow">↓ 二次加工</span>
-          <span class="to">クラフトビール醸造など</span>
-        </div>
-      </div>
-      <div class="pair">
-        <div class="idx">CANDIDATE 04</div>
-        <div class="name">コーヒーかす</div>
-        <div class="flow">
-          <span class="from">カフェの抽出かす</span>
-          <span class="arrow">↓ 加工</span>
-          <span class="to">きのこ栽培・バイオ素材</span>
-        </div>
-      </div>
-      <div class="pair">
-        <div class="idx">CANDIDATE 05</div>
-        <div class="name">建設現場の端材</div>
-        <div class="flow">
-          <span class="from">現場ごとに出る余り</span>
-          <span class="arrow">↓ 規格化</span>
-          <span class="to">DIY・小規模施工</span>
-        </div>
-      </div>
+      <div class="quad-axis"><span>← 処分費がかかる</span><span>そのまま売れる →</span></div>
+      <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域を今は狙っています。</p>
+    </div>
+
+    <p class="section-desc" style="margin-bottom:14px;">具体的な候補は、まだ空白。思いついたらここに書いていきます。</p>
+    <div class="blank-slots">
+      <div class="blank-slot">?</div>
+      <div class="blank-slot">?</div>
+      <div class="blank-slot">?</div>
     </div>
   </section>
 
@@ -422,8 +370,8 @@
     <h2>正直、まだ悩んでいること</h2>
     <p class="section-desc">軸は決まったものの、「これだ」という具体案にはまだ至っていません。</p>
     <div class="stuck-card">
-      <p>「余っているもの」で考えられる案自体はいくらでも出てきます。でも例えば<b>車のライドシェア</b>のように、すでに世界中で使い倒されている領域は、正直<b>後発すぎる</b>気がして踏み切れずにいます。</p>
-      <p>だからこそ、<b>まだ誰も手をつけていない「余っているもの」</b>を一緒に探したいです。特に、参加者それぞれが詳しい分野・業界にこそ、まだ気づかれていない余剰が眠っている気がしています。</p>
+      <p>案自体はいくらでも出てきます。でも例えば<b>車のライドシェア</b>のように、すでに世界中で使い倒されている領域は<b>後発すぎる</b>気がして踏み切れずにいます。</p>
+      <p>余ったものを<b>そのまま渡すのか、加工するのか、再定義してから渡すのか</b>——そこもまだブレスト中です。参加者それぞれが詳しい分野にこそ、気づかれていない余剰が眠っている気がしています。</p>
     </div>
   </section>
 
@@ -468,15 +416,14 @@
   <!-- 05 みんなが聞きたいこと -->
   <section style="padding-top:0;">
     <div class="section-tag"><span class="num">5</span><span class="label">YOUR TURN</span></div>
-    <h2>逆に、気になることは？</h2>
+    <h2>気になったこと、なんでも</h2>
     <div class="ask-back">
-      <h3>「それって結局◯◯じゃない？」<br>を歓迎します。</h3>
-      <p>スライドの代わりにこのページを作ったのは、一方的に話すより先に、率直な質問や違和感をもらいたかったからです。正直、まだ「これだ」という決定打はありません。でも、やる気と勢いだけはあります。あなたの関心分野の話を聞かせてもらえたら、その場で一緒に考えられると思います。</p>
+      <h3>正直、まだ答えられないことの方が多いです。</h3>
+      <p>ビジネスアイデアはまだ何ひとつ固まっていません。だからこの資料はスライドではなく質問リストです。「それ、必要？」でも構いません。答えられなくても、その場で一緒に考えたいです。</p>
       <div class="chip-row">
-        <span class="chip">社会的インパクトは？</span>
-        <span class="chip">収益化の道筋は？</span>
-        <span class="chip">なぜ仙台発でやる？</span>
-        <span class="chip">競合との違いは？</span>
+        <span class="chip">それ、必要？</span>
+        <span class="chip">なんでその市場？</span>
+        <span class="chip">勝てる理由は？</span>
         <span class="chip">一緒に考えてくれる？</span>
       </div>
     </div>
@@ -486,7 +433,7 @@
     <div class="fname">石川翔太郎</div>
     <div class="frole">SGSC 2026 ／ STAGE2 起案チーム</div>
     <div class="fline"></div>
-    <div class="fmeta">最終更新 2026.07.16 ／ このページはマッチングイベント用の簡易資料です</div>
+    <div class="fmeta">最終更新 2026.07.17 ／ このページはマッチングイベント用の簡易資料です</div>
   </footer>
 
 </div>
