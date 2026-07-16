@@ -119,6 +119,29 @@
   .biz-merit{background:var(--lime-tint); border-radius:10px; padding:10px 12px; font-size:11.5px; color:var(--ink); line-height:1.55;}
   .biz-merit b{display:block; font-size:10px; color:var(--lime-deep); margin-bottom:3px; letter-spacing:.03em;}
 
+  /* ---------- axis reference examples ---------- */
+  .axis-example{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:10px;
+  }
+  .axis-example:last-child{margin-bottom:0;}
+  .axis-example .co{font-size:12px; font-weight:800; color:var(--lime-deep); margin-bottom:10px;}
+  .ax-row{display:flex; align-items:center; gap:8px;}
+  .ax-col{flex:1; min-width:0;}
+  .ax-k{font-size:9.5px; color:var(--gray); font-weight:700; letter-spacing:.03em; margin-bottom:3px;}
+  .ax-v{font-size:12.5px; font-weight:700; line-height:1.45;}
+  .ax-arrow{font-size:13px; color:var(--gray); flex-shrink:0;}
+
+  /* ---------- team-call ---------- */
+  .team-call{
+    background:var(--lime-tint); border-radius:16px; padding:18px 18px; margin-top:16px;
+  }
+  .team-call .label{font-size:11px; font-weight:800; color:var(--lime-deep); letter-spacing:.04em; margin-bottom:10px;}
+  .team-call .row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip-outline{
+    background:var(--card); border:1.5px solid var(--ink); color:var(--ink); font-size:12px; font-weight:700;
+    padding:8px 13px; border-radius:999px;
+  }
+
   /* ---------- stuck-on card ---------- */
   .stuck-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 18px;}
   .stuck-card p{font-size:13.5px; color:var(--gray);}
@@ -315,6 +338,34 @@
       <p class="quad-note">縦軸は「反転余地」、横軸は「保有者にとっての現在価値」。<b>右下＝既に価値があり、集めにくいだけ</b>の領域から、2週間で検証できる需給ペアを探しています。</p>
     </div>
 
+    <p class="section-desc" style="margin-bottom:14px;">シンプルに言うと、<b style="color:var(--ink);">「めっちゃ余ってるもの」を「めっちゃ困ってる誰か」に渡す</b>——これが軸です。手本にしている3つの事例。</p>
+    <div style="margin-bottom:30px;">
+      <div class="axis-example">
+        <div class="co">タイミー</div>
+        <div class="ax-row">
+          <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">誰かの空き時間</div></div>
+          <div class="ax-arrow">→</div>
+          <div class="ax-col"><div class="ax-k">めっちゃ困ってる人</div><div class="ax-v">今すぐ人手が欲しい店舗</div></div>
+        </div>
+      </div>
+      <div class="axis-example">
+        <div class="co">メルカリ</div>
+        <div class="ax-row">
+          <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">使わなくなったモノ</div></div>
+          <div class="ax-arrow">→</div>
+          <div class="ax-col"><div class="ax-k">めっちゃ困ってる人</div><div class="ax-v">安く・すぐ手に入れたい人</div></div>
+        </div>
+      </div>
+      <div class="axis-example">
+        <div class="co">ボーダレス・ジャパン（AMOMA）</div>
+        <div class="ax-row">
+          <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">まだ活かしきれていない有機ハーブ</div></div>
+          <div class="ax-arrow">→</div>
+          <div class="ax-col"><div class="ax-k">めっちゃ困ってる人</div><div class="ax-v">カフェインを避けたい妊婦・授乳期のママ</div></div>
+        </div>
+      </div>
+    </div>
+
     <p class="section-desc" style="margin-bottom:14px;">この軸で今考えている仮説の例（横にスクロールできます）</p>
     <div class="pair-scroll">
       <div class="pair">
@@ -390,18 +441,26 @@
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
-        <p>5つの候補ペア、どれが一番「2週間で仮説検証できそう」に見える？</p>
-        <div class="sub">直感でOKです。理由も添えてもらえると助かります</div>
+        <p>逆に、「ここはまだ誰もやってなさそう」と思う領域、ある？</p>
+        <div class="sub">ライドシェアみたいに後発すぎる場所は避けたくて</div>
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
-        <p>ライドシェアみたいに「後発すぎる」領域を避けるとしたら、どこに気をつければいい？</p>
-        <div class="sub">競合の少ない切り口を見極めるヒントが欲しいです</div>
+        <p>そもそもの出発点だった「社会人の孤独」について、何か思うことある？</p>
+        <div class="sub">趣味の案は手放したけど、根っこの関心はまだそこにあります</div>
       </div>
       <div class="q-item">
         <div class="qmark">Q</div>
         <p>この領域に詳しい人・つなげてほしい人に心当たりはある？</p>
         <div class="sub">回収・物流・自治体まわりの知見がある方は特に</div>
+      </div>
+    </div>
+
+    <div class="team-call">
+      <div class="label">来てほしい人</div>
+      <div class="row">
+        <span class="chip-outline">とにかくやる気がある人</span>
+        <span class="chip-outline">僕らにない関心分野を持っている人</span>
       </div>
     </div>
   </section>
