@@ -127,7 +127,17 @@
     background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:10px;
   }
   .axis-example:last-child{margin-bottom:0;}
-  .axis-example .co{font-size:12px; font-weight:800; color:var(--lime-deep); margin-bottom:10px;}
+  .ax-head{display:flex; align-items:center; gap:9px; margin-bottom:12px;}
+  .ax-icon{
+    width:30px; height:30px; border-radius:9px; background:var(--lime-tint); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:var(--ink);
+  }
+  .ax-icon svg{width:18px; height:18px;}
+  .axis-example .co{font-size:13px; font-weight:800; color:var(--ink);}
+  .ax-tag{
+    margin-left:auto; font-size:10px; font-weight:800; color:var(--lime-deep);
+    background:#fff; border:1px solid var(--line); border-radius:999px; padding:3px 10px;
+  }
   .ax-row{display:flex; align-items:center; gap:8px;}
   .ax-col{flex:1; min-width:0;}
   .ax-k{font-size:9.5px; color:var(--gray); font-weight:700; letter-spacing:.03em; margin-bottom:3px;}
@@ -417,10 +427,14 @@
       </div>
     </div>
 
-    <p class="section-desc" style="margin-bottom:14px;">実際にこの型で伸びた、手本にしている3つの事例。</p>
+    <p class="section-desc" style="margin-bottom:14px;">実際にこの型で伸びた、手本にしている事例。<b style="color:var(--ink);">何を余らせて、何とマッチさせているか</b>をアイコンで。</p>
     <div style="margin-bottom:30px;">
       <div class="axis-example">
-        <div class="co">タイミー</div>
+        <div class="ax-head">
+          <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="14"/><path d="M24 26 V18 M24 26 L30 29"/><path d="M19 8 H29 M24 8 V12"/></svg></span>
+          <span class="co">タイミー</span>
+          <span class="ax-tag">時間</span>
+        </div>
         <div class="ax-row">
           <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">誰かの空き時間</div></div>
           <div class="ax-arrow">→</div>
@@ -428,7 +442,11 @@
         </div>
       </div>
       <div class="axis-example">
-        <div class="co">メルカリ</div>
+        <div class="ax-head">
+          <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18 L24 11 L38 18 L24 25 Z"/><path d="M10 18 V34 L24 41 V25"/><path d="M38 18 V34 L24 41"/></svg></span>
+          <span class="co">メルカリ</span>
+          <span class="ax-tag">モノ</span>
+        </div>
         <div class="ax-row">
           <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">使わなくなったモノ</div></div>
           <div class="ax-arrow">→</div>
@@ -436,7 +454,23 @@
         </div>
       </div>
       <div class="axis-example">
-        <div class="co">ボーダレス・ジャパン（AMOMA）</div>
+        <div class="ax-head">
+          <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 24 L24 11 L39 24"/><path d="M13 21 V38 H35 V21"/><path d="M20 38 V29 H28 V38"/></svg></span>
+          <span class="co">akippa（あきっぱ）</span>
+          <span class="ax-tag">空間</span>
+        </div>
+        <div class="ax-row">
+          <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">使っていない駐車場・空きスペース</div></div>
+          <div class="ax-arrow">→</div>
+          <div class="ax-col"><div class="ax-k">めっちゃ困ってる人</div><div class="ax-v">今すぐ停めたいドライバー</div></div>
+        </div>
+      </div>
+      <div class="axis-example">
+        <div class="ax-head">
+          <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40 C24 30 14 30 14 21 C14 15 20 13 24 18 C28 13 34 15 34 21 C34 30 24 30 24 40 Z"/><path d="M24 40 C24 32 24 24 24 18"/></svg></span>
+          <span class="co">ボーダレス・ジャパン（AMOMA）</span>
+          <span class="ax-tag">モノ</span>
+        </div>
         <div class="ax-row">
           <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">まだ活かしきれていない有機ハーブ</div></div>
           <div class="ax-arrow">→</div>
@@ -536,7 +570,6 @@
   </section>
 
   <footer>
-    <div class="fname">石川翔太郎</div>
     <div class="frole">SGSC 2026 ／ STAGE2 起案チーム</div>
     <div class="fline"></div>
     <div class="fmeta">最終更新 2026.07.17 ／ このページはマッチングイベント用の簡易資料です</div>
