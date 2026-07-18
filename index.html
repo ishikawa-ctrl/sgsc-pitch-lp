@@ -84,7 +84,7 @@
     width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
   }
   .section-tag .label{font-size:12px; font-weight:800; letter-spacing:.06em; color:var(--gray);}
-  h2{font-size:24px; font-weight:900; letter-spacing:-.01em; margin-bottom:14px;}
+  h2{font-size:24px; font-weight:900; letter-spacing:-.01em; line-height:1.38; margin-bottom:14px;}
   .section-desc{font-size:14px; color:var(--gray); margin-bottom:26px;}
 
   /* ---------- timeline (経緯) ---------- */
@@ -124,7 +124,7 @@
 
   /* ---------- axis reference examples ---------- */
   .axis-example{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:10px;
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:10px;
   }
   .axis-example:last-child{margin-bottom:0;}
   .ax-head{display:flex; align-items:center; gap:9px; margin-bottom:12px;}
@@ -154,6 +154,26 @@
     background:var(--card); border:1.5px solid var(--ink); color:var(--ink); font-size:12px; font-weight:700;
     padding:8px 13px; border-radius:999px;
   }
+
+  /* ---------- social impact ---------- */
+  .impact{background:var(--ink); border-radius:20px; padding:22px 18px; color:var(--paper);}
+  .impact-row{display:flex; align-items:stretch; gap:10px;}
+  .impact-side{
+    flex:1; background:#1a1d16; border-radius:14px; padding:16px 10px; text-align:center;
+  }
+  .impact-badge{
+    width:40px; height:40px; border-radius:50%; border:2px solid var(--lime); color:var(--lime);
+    display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; margin:0 auto 10px;
+  }
+  .impact-t{font-size:13px; font-weight:800; color:#fff; margin-bottom:5px;}
+  .impact-d{font-size:10.5px; color:#9aa093; line-height:1.5;}
+  .impact-plus{display:flex; align-items:center; font-size:20px; font-weight:900; color:var(--lime);}
+  .impact-arrow{text-align:center; font-size:12px; font-weight:800; color:var(--lime); margin:14px 0;}
+  .impact-result{
+    background:var(--lime); color:var(--ink); border-radius:14px; padding:16px;
+    font-size:13.5px; line-height:1.75; text-align:center;
+  }
+  .impact-result b{font-weight:900;}
 
   /* ---------- stuck-on card ---------- */
   .stuck-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 18px;}
@@ -202,7 +222,7 @@
   /* ---------- questions (聞きたいこと) ---------- */
   .q-list{display:flex; flex-direction:column; gap:12px;}
   .q-item{
-    background:var(--card); border:1px solid var(--line); border-radius:18px 18px 18px 4px; padding:18px 18px;
+    background:var(--card); border:1px solid var(--line); border-radius:16px 16px 16px 4px; padding:18px 18px;
     position:relative;
   }
   .q-item .qmark{
@@ -215,7 +235,7 @@
 
   /* ---------- ask-back CTA ---------- */
   .ask-back{
-    background:var(--lime); border-radius:22px; padding:26px 22px; text-align:left;
+    background:var(--lime); border-radius:20px; padding:26px 22px; text-align:left;
   }
   .ask-back h3{font-size:19px; font-weight:900; margin-bottom:10px; line-height:1.5;}
   .ask-back p{font-size:13.5px; color:#3a3f2e; margin-bottom:18px;}
@@ -228,10 +248,18 @@
   /* ---------- surplus types (時間/モノ/空間/お金) ---------- */
   .surplus-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-bottom:30px;}
   .surplus{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 4px 12px; text-align:center;
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 4px 12px; text-align:center;
   }
   .surplus svg{width:32px; height:32px; margin:0 auto 8px; color:var(--ink);}
   .surplus .lbl{font-size:12.5px; font-weight:800;}
+
+  /* ---------- consistent card lift ---------- */
+  .tl-card,.axis-example,.surplus,.stuck-card,.q-item,.team-call{
+    box-shadow:0 2px 10px rgba(20,30,15,.045);
+  }
+  .quad-box,.impact,.ask-back{
+    box-shadow:0 14px 36px rgba(20,30,15,.11);
+  }
 
   /* ---------- offering illustration ---------- */
   .give-illust{margin:0 auto 26px; width:150px; color:var(--ink); display:block;}
@@ -319,7 +347,7 @@
     <p class="lede">趣味のサブスクから始まった検討は、いま「世界中のどこにでもある余剰」を扱う方向に大きく舵を切っています。ここまでの経緯と、今の考え方を短くまとめました。</p>
     <div class="hero-foot">
       <div class="arrow-down">↓</div>
-      経緯 → 今の軸 → 聞きたいこと、の順で3分
+      経緯 → 今の軸 → 意義 → 聞きたいこと、の順で3分
     </div>
   </div>
 
@@ -467,6 +495,18 @@
       </div>
       <div class="axis-example">
         <div class="ax-head">
+          <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19 V37"/><path d="M8 27 H40 a2 2 0 0 1 2 2 V37"/><path d="M8 32 H42"/><path d="M13 27 V23 a2 2 0 0 1 2-2 H23 a2 2 0 0 1 2 2 V27"/></svg></span>
+          <span class="co">Airbnb（エアビーアンドビー）</span>
+          <span class="ax-tag">空間</span>
+        </div>
+        <div class="ax-row">
+          <div class="ax-col"><div class="ax-k">めっちゃ余ってるもの</div><div class="ax-v">空いている部屋・家</div></div>
+          <div class="ax-arrow">→</div>
+          <div class="ax-col"><div class="ax-k">めっちゃ困ってる人</div><div class="ax-v">安く泊まりたい旅行者</div></div>
+        </div>
+      </div>
+      <div class="axis-example">
+        <div class="ax-head">
           <span class="ax-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40 C24 30 14 30 14 21 C14 15 20 13 24 18 C28 13 34 15 34 21 C34 30 24 30 24 40 Z"/><path d="M24 40 C24 32 24 24 24 18"/></svg></span>
           <span class="co">ボーダレス・ジャパン（AMOMA）</span>
           <span class="ax-tag">モノ</span>
@@ -504,9 +544,37 @@
     </div>
   </section>
 
-  <!-- 03 困っていること -->
+  <!-- 03 社会的意義 -->
   <section style="padding-top:0;">
-    <div class="section-tag"><span class="num">3</span><span class="label">STUCK ON</span></div>
+    <div class="section-tag"><span class="num">3</span><span class="label">WHY IT MATTERS</span></div>
+    <h2>困ってる人と、困ってる人を、<br>同時に。</h2>
+    <p class="section-desc">分野はまだ決めていないけど、この構造だけは自信があります。</p>
+    <div class="impact">
+      <div class="impact-row">
+        <div class="impact-side">
+          <div class="impact-badge">余</div>
+          <div class="impact-t">余らせて困ってる</div>
+          <div class="impact-d">持て余す・処分費がかかる・もったいない</div>
+        </div>
+        <div class="impact-plus">＋</div>
+        <div class="impact-side">
+          <div class="impact-badge">欲</div>
+          <div class="impact-t">欲しくて困ってる</div>
+          <div class="impact-d">手に入らない・高い・見つからない</div>
+        </div>
+      </div>
+      <div class="impact-arrow">↓ つなぐと</div>
+      <div class="impact-result">
+        2つの「困った」が同時に消える。<br>
+        <b>だから、金儲けの前にちゃんと課題解決になっている。</b>
+      </div>
+    </div>
+    <p class="section-desc" style="margin-top:18px; margin-bottom:0;">※ どの分野の課題を解くかはこれから。でも「両方の困りごとを一度に解く」この形そのものを、いちばん大事にしています。</p>
+  </section>
+
+  <!-- 04 困っていること -->
+  <section style="padding-top:0;">
+    <div class="section-tag"><span class="num">4</span><span class="label">STUCK ON</span></div>
     <h2>正直、まだ悩んでいること</h2>
     <p class="section-desc">軸は決まったものの、「これだ」という具体案にはまだ至っていません。</p>
     <div class="stuck-card">
@@ -515,9 +583,9 @@
     </div>
   </section>
 
-  <!-- 04 みんなに聞きたいこと -->
+  <!-- 05 みんなに聞きたいこと -->
   <section style="padding-top:0;">
-    <div class="section-tag"><span class="num">4</span><span class="label">ASKING YOU</span></div>
+    <div class="section-tag"><span class="num">5</span><span class="label">ASKING YOU</span></div>
     <h2>みんなに聞きたいこと</h2>
     <p class="section-desc">この軸で進めるにあたって、率直な意見が欲しいです。</p>
 
@@ -553,9 +621,9 @@
     </div>
   </section>
 
-  <!-- 05 みんなが聞きたいこと -->
+  <!-- 06 みんなが聞きたいこと -->
   <section style="padding-top:0;">
-    <div class="section-tag"><span class="num">5</span><span class="label">YOUR TURN</span></div>
+    <div class="section-tag"><span class="num">6</span><span class="label">YOUR TURN</span></div>
     <h2>気になったこと、なんでも</h2>
     <div class="ask-back">
       <h3>正直、まだ答えられないことの方が多いです。</h3>
